@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihat'ıma Özel 3. Yıl Dönümü Dünyamız ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-entry">
+  <!-- Arka Plan Parçacık ve Uçuşan Kalpler Katmanı -->
+  <div id="ambient-layer" aria-hidden="true"></div>
+  <!-- Tıklama & Patlama Efekt Katmanı -->
+  <div id="burst-layer" aria-hidden="true"></div>
+
+<!-- Arka Plan Müziği (Otomatik çalmaz, kullanıcı isteğiyle başlar) -->
+  <audio id="bg-music" loop preload="metadata">
+    <source src="muzik.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Üst Sağ Sabit Kontroller: Müzik & Gizli Kalp -->
+  <div class="floating-controls">
+    <button id="music-toggle" class="pill-btn" title="Müziği Aç / Kapat">
+      <span id="music-icon">🎵</span>
+      <span id="music-text">Müzik Aç</span>
+    </button>
+  </div>
+
+  <!-- Köşedeki Gizli Sürpriz Kalp (Madde 14-D) -->
+  <button id="secret-corner-heart" class="secret-corner-heart" title="Beni buldun!" aria-label="Gizli Sürpriz">
+    ✨❤️
+  </button>
+
+  <!-- =========================================================
+       3. ÖZEL GİRİŞ EKRANI ❤️
+       ========================================================= -->
+  <section id="entry-screen" class="screen active">
+    <div class="entry-content">
+      <div class="entry-stars">✨ ⭐ ✨</div>
+      <div class="big-beating-heart-wrapper" id="entry-heart-wrapper">
+        <div class="heart-glow"></div>
+        <div class="big-beating-heart">❤️</div>
+        <span class="orbit-heart oh-1">💗</span>
+        <span class="orbit-heart oh-2">💜</span>
+        <span class="orbit-heart oh-3">🧡</span>
+        <span class="orbit-heart oh-4">💖</span>
+      </div>
+      <h1 class="entry-title">Sana hazırladığım küçük bir dünya var...<br />Hazır mısın Nihatım?</h1>
+      <p class="entry-subtitle">3. Yılımıza Özel Dijital Hediyen</p>
+      <button id="enter-world-btn" class="primary-glow-btn">
+        DÜNYAMA GİR ❤️
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ÜST NAVİGASYON BAR (Giriş ekranından sonra görünür)
+       ========================================================= -->
+  <header id="top-bar" class="top-bar hidden">
+    <div class="top-bar-left">
+      <button id="nav-home-btn" class="nav-chip">🏠 Ana Menü</button>
+      <button id="quick-jump-toggle" class="nav-chip">🧭 Bölümler</button>
+      <button id="nav-favorites-btn" class="nav-chip">⭐ Favoriler (<span id="fav-count">0</span>)</button>
+    </div>
+    <div class="top-bar-center">
+      <span id="current-section-badge" class="section-badge">Ana Menü</span>
+    </div>
+    <div class="top-bar-right">
+      <div class="stat-pill" title="Keşfedilen Bölüm İlerlemesi">
+        🗺️ <span id="progress-text">0/18</span>
+      </div>
+      <div class="stat-pill" title="Toplanan Kalp Koleksiyonu">
+        💖 <span id="heart-collection-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hızlı Bölüm Geçiş Menüsü (Dropdown/Drawer) -->
+  <div id="quick-jump-drawer" class="quick-jump-drawer hidden">
+    <div class="quick-jump-header">
+      <h3>Hızlı Bölüm Seçimi ❤️</h3>
+      <button id="close-quick-jump" class="icon-close-btn">✕</button>
+    </div>
+    <div id="quick-jump-list" class="quick-jump-list"></div>
+  </div>
+
+  <!-- =========================================================
+       4. ANA MENÜ EKRANI
+       ========================================================= -->
+  <main id="main-menu-screen" class="screen hidden">
+    <div class="container">
+      <div class="hero-banner">
+        <h2 class="romantic-heading">3. Yılımız Kutlu Olsun Nihatım ❤️</h2>
+        <p class="hero-desc">Senin için hazırladığım bu küçük dünyada her kalbin arkasında bizden bir iz var.</p>
+
+        <!-- 14-E: 3 Yıllık Romantik Sayaç -->
+        <div class="anniversary-counter-card">
+          <div class="counter-title">⏳ Seninle Geçen Her Anımız</div>
+          <div class="counter-grid" id="anniversary-counter">
+            <div class="counter-box"><span id="cnt-years">3</span><small>Yıl</small></div>
+            <div class="counter-box"><span id="cnt-days">1095</span><small>Gün</small></div>
+            <div class="counter-box"><span id="cnt-hours">00</span><small>Saat</small></div>
+            <div class="counter-box"><span id="cnt-mins">00</span><small>Dakika</small></div>
+            <div class="counter-box"><span id="cnt-secs">00</span><small>Saniye</small></div>
+          </div>
+        </div>
+
+        <!-- 14-A: Günün Romantik Mesajı -->
+        <div class="daily-message-box">
+          <span class="daily-badge">💌 Günün Romantik Mesajı</span>
+          <p id="daily-message-text"></p>
+        </div>
+      </div>
+
+      <!-- Yeni Özel Sürpriz Bölümler Başlığı -->
+      <div class="menu-group-header">
+        <h3>✨ Yeni Sürpriz Bölümlerimiz</h3>
+      </div>
+      <div id="new-sections-grid" class="menu-cards-grid"></div>
+
+      <!-- Mevcut 12 Bölüm Başlığı -->
+      <div class="menu-group-header">
+        <h3>📖 3. Yıl Özel Koleksiyonumuz (Mevcut Bölümler)</h3>
+      </div>
+      <div id="existing-sections-grid" class="menu-cards-grid"></div>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       DİNAMİK BÖLÜM EKRANI (Her bölüm kendi bağımsız ekranında açılır)
+       ========================================================= -->
+  <section id="section-view-screen" class="screen hidden">
+    <div class="container">
+      <!-- Sayfa İçi Üst Navigasyon ve İlerleme -->
+      <div class="page-nav-bar">
+        <button id="prev-page-btn" class="nav-btn">⬅️ Önceki Sayfa</button>
+        <button id="back-to-menu-btn" class="nav-btn primary-nav">🏠 Ana Menüye Dön</button>
+        <button id="next-page-btn" class="nav-btn">Sonraki Sayfa ➡️</button>
+      </div>
+
+      <div class="section-header-card">
+        <div class="section-progress-bar-wrap">
+          <div id="section-progress-fill" class="section-progress-fill"></div>
+        </div>
+        <span id="section-step-indicator" class="step-indicator">Bölüm 1 / 18</span>
+        <h2 id="section-view-title" class="romantic-heading"></h2>
+        <p id="section-view-desc" class="section-subtitle"></p>
+      </div>
+
+      <!-- Bölüm İçeriğinin Dinamik Olarak Yükleneceği Alan -->
+      <div id="section-dynamic-content" class="section-dynamic-content"></div>
+
+      <!-- Sayfa Altı Navigasyon -->
+      <div class="page-nav-bar bottom-nav">
+        <button id="prev-page-btn-bottom" class="nav-btn">⬅️ Önceki Sayfa</button>
+        <button id="back-to-menu-btn-bottom" class="nav-btn primary-nav">🏠 Ana Menüye Dön</button>
+        <button id="next-page-btn-bottom" class="nav-btn">Sonraki Sayfa ➡️</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MESAJ AÇILIR KARTI (MODAL - Kalp Kutucukları & Kilitler İçin)
+       ========================================================= -->
+  <div id="message-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" id="modal-card">
+      <div class="modal-hearts-deco">💖 ✨ 💗</div>
+      <span id="modal-badge" class="modal-badge">#1</span>
+      <h3 id="modal-title" class="modal-title hidden"></h3>
+      <div id="modal-body" class="modal-body"></div>
+      <!-- Çok aşamalı kartlar için sonraki aşama butonu -->
+      <div id="modal-stage-controls" class="modal-stage-controls hidden">
+        <button id="next-stage-btn" class="primary-glow-btn small-btn">Sonraki Aşamayı Aç ✨</button>
+      </div>
+      <div class="modal-actions">
+        <button id="modal-fav-btn" class="action-chip-btn">🤍 Favorilere Ekle</button>
+        <button id="modal-copy-btn" class="action-chip-btn">📋 Kopyala</button>
+        <button id="modal-close-btn" class="close-modal-btn">Kapat ❤️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kopyalandı Bildirimi (Toast) -->
+  <div id="toast-notification" class="toast hidden">Mesaj kopyalandı! ❤️</div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
